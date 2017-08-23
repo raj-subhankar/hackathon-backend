@@ -1,0 +1,34 @@
+{
+  "name": "retailspace-backend",
+  "version": "1.0.0",
+  "description": "Retailspace Backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raj-subhankar/retailspace-backend.git"
+  },
+  "keywords": [
+    "retailspace",
+    "backend"
+  ],
+  "author": "Subhankar Raj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raj-subhankar/retailspace-backend/issues"
+  },
+  "homepage": "https://github.com/raj-subhankar/retailspace-backend#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.14.1",
+    "imagemagick": "^0.1.3",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "^4.9.3",
+    "morgan": "^1.8.0",
+    "multer": "^1.3.0"
+  }
+}
