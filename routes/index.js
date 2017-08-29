@@ -6,6 +6,7 @@ var User    = require('../models/user');
 
 //Routes
 router.use('/users',    require('./user'));
+router.use('/posts', 	require('./post'));
 
 router.route('/').get(function(req, res){
     res.json('Welcome!');
