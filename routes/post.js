@@ -235,10 +235,10 @@ router.route('/comment').post(function(req, res, next){
 	
 	    post.commentCount = post.comments.unshift(comment);
 
-	    res.json({message: 'comment inserted});
-	}     
+	    res.json({message: 'comment inserted'});
+	})     
     })
-}
+})
 
 // Return router
 module.exports = router;
