@@ -12,6 +12,9 @@ var UserSchema = new Schema({
     name: 	   { type: String },
     profilePic:    {type: String},
     password: 	   { type: String, required: true },
+    fullName: 	   { type: String },
+    dob:	   { type: String },
+    voterId:	   { type: String },
     loginAttempts: { type: Number, required: true, default: 0 },
     lockUntil: 	   { type: Number }
 });

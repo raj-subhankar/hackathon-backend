@@ -6,7 +6,15 @@ var PostSchema = new mongoose.Schema({
     user: {
 	type: mongoose.Schema.Types.ObjectId, ref:'User',
     },
-    postBody: {
+    timeStamp: {
+	type: String,
+	default: ''
+    },
+    messageTitle: {
+	type: String,
+	default: ''
+    },
+    messageBody: {
 	type: String,
 	default: ''
     },
@@ -21,14 +29,25 @@ var PostSchema = new mongoose.Schema({
 	},
 	coordinates: [Number]
     },
-    likesCount: {
+    upVoteCount: {
         type: Number,
         default: 0
     },
-    likes: [{
+    upVote: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User',
         default: []
-    }]
+    }],
+    downVoteCount: {
+	type: Number,
+   	default: 0
+    },
+    downVote: [{
+	type: mongoose.Schema,Types.ObjectId, ref: 'User',
+	default: []
+    }],
+    pickedUpBy : {
+	type: mongoose.Schema.Types.ObjectId, ref: 'User',
+    }
 });
 
 PostSchema.index({ location : '2dsphere' });
