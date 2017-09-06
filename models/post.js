@@ -7,8 +7,8 @@ var PostSchema = new mongoose.Schema({
 	type: mongoose.Schema.Types.ObjectId, ref:'User',
     },
     timeStamp: {
-	type: String,
-	default: ''
+	type: Date,
+	default: Date.now
     },
     messageTitle: {
 	type: String,
@@ -45,6 +45,13 @@ var PostSchema = new mongoose.Schema({
 	type: mongoose.Schema,Types.ObjectId, ref: 'User',
 	default: []
     }],
+    comments: [{
+    	type: mongoose.Schema.Types.ObjectId, ref: 'Comment'
+    }], 
+    commentCount: {
+	type: Number,
+	default: 0
+    },
     pickedUpBy : {
 	type: mongoose.Schema.Types.ObjectId, ref: 'User',
     }

@@ -8,6 +8,7 @@ var im          = require('imagemagick');
 // Models
 var Post        = require('../models/post');
 var User        = require('../models/user');
+var Comment	= require('../models/comment');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -224,6 +225,20 @@ router.route('/downvote').post(function(req, res, next){
     });
 });
 
+router.route('/comment').post(function(req, res, next){
+    Post.findOne({_id: req.body.post_id}, function(error, post){
+	if(error) return next(error);
+	var postedBy = req.body.user;
+	var comment = new Comment(req.body);
+ 	comment.save(function(error, result){
+	    if(error) return next(error);
+	
+	    post.commentCount = post.comments.unshift(comment);
+
+	    res.json({message: 'comment inserted});
+	}     
+    })
+}
 
 // Return router
 module.exports = router;
