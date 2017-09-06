@@ -176,29 +176,54 @@ router.route('/:post_id').delete(function(req, res, next){
     });
 });
 
-router.route('/like').post(function(req, res, next){
+router.route('/upvote').post(function(req, res, next){
     Post.findOne({_id: req.body.post_id}, function(error, post){
         if(error) return next(error);
         var userId = req.body.userId;
 
-        var index = post.likes.indexOf(userId);
+        var index = post.upVotes.indexOf(userId);
         if(index == -1) {
-            post.likes.push(userId);
-            post.likesCount++;
+            post.upVotes.push(userId);
+            post.upVoteCount++;
             post.save(function(error){
                 if(error) return next(error);
-                res.json({message: 'Post liked'});
+                res.json({message: 'Post upvoted'});
             });
         } else {
-            post.likes.splice(index, 1);
-            post.likesCount--;
+            post.upVotes.splice(index, 1);
+            post.upVoteCount--;
             post.save(function(error){
                 if(error) return next(error);
-                res.json({message: 'Post unliked'});
+                res.json({message: 'Upvote removed'});
             });
         }
     });
 });
+
+router.route('/downvote').post(function(req, res, next){
+    Post.findOne({_id: req.body.post_id}, function(error, post){
+        if(error) return next(error);
+        var userId = req.body.userId;
+
+        var index = post.downVotes.indexOf(userId);
+        if(index == -1) {
+            post.downVotes.push(userId);
+            post.downVoteCount++;
+            post.save(function(error){
+                if(error) return next(error);
+                res.json({message: 'Post downVoted'});
+            });
+        } else {
+            post.downVotes.splice(index, 1);
+            post.downVoteCount--;
+            post.save(function(error){
+                if(error) return next(error);
+                res.json({message: 'DownVote removed'});
+            });
+        }
+    });
+});
+
 
 // Return router
 module.exports = router;
