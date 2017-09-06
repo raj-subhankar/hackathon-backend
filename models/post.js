@@ -33,7 +33,7 @@ var PostSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    upVote: [{
+    upVotes: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User',
         default: []
     }],
@@ -41,7 +41,7 @@ var PostSchema = new mongoose.Schema({
 	type: Number,
    	default: 0
     },
-    downVote: [{
+    downVotes: [{
 	type: mongoose.Schema,Types.ObjectId, ref: 'User',
 	default: []
     }],
