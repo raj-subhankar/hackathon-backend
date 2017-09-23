@@ -32,6 +32,12 @@ required params, "post_id" & "user_id"
 POST req to `base_url/posts/comment`
 required params, "post_id", "user_id"
 
+## To get all posts in a location
+GET req to `base_url/posts/all?lat=79.0106&lng=11.4289`
+
+## To get all posts by an user
+GET req to `base_url/posts/all/:user_id`
+
 #Schemas
 
 ## User
