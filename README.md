@@ -6,18 +6,18 @@ Hackerearth hackathon backend
 base_url = http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000
 
 ## To create new user
-POST request to base_url/users/add with the minimum required fields
+POST request to `base_url/users/add` with the minimum required fields
 Image should be sent as multipart request
 
 ## To update user
-PUT request to base_url/users/:user_id
+PUT request to `base_url/users/:user_id`
 
 ## To create new post
-POST request to base_url/posts/add
+POST request to `base_url/posts/add`
 Image should be sent as multipart request
 
 ## To update post
-PUT request to base_url/:post_id
+PUT request to `base_url/:post_id`
 
 #Schemas
 
