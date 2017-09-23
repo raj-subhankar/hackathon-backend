@@ -1,6 +1,19 @@
 # hackathon-backend
 Hackerearth hackathon backend
 
+#APIs
+
+## To create new user
+POST request to localhost:3000/users/add with the minimum required fields
+
+## To update user
+PUT request to localhost:3000/users/:user_id
+
+## To create new post
+POST request to 
+
+
+
 #Schemas
 
 ## User
