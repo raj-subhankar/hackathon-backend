@@ -42,7 +42,7 @@ var PostSchema = new mongoose.Schema({
    	default: 0
     },
     downVotes: [{
-	type: mongoose.Schema,Types.ObjectId, ref: 'User',
+	type: mongoose.Schema.Types.ObjectId, ref: 'User',
 	default: []
     }],
     comments: [{
