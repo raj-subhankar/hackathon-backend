@@ -1,22 +1,43 @@
 # hackathon-backend
 Hackerearth hackathon backend
 
-<<<<<<< HEAD
-=======
 #APIs
 
+base_url = http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000
+
 ## To create new user
-POST request to localhost:3000/users/add with the minimum required fields
+POST request to `base_url/users/add` 
+required params "email" & "password"
+Image should be sent as multipart request
 
 ## To update user
-PUT request to localhost:3000/users/:user_id
+PUT request to `base_url/users/:user_id`
 
 ## To create new post
-POST request to 
+POST request to `base_url/posts/add`
+Image should be sent as multipart request
 
+## To update post
+PUT request to `base_url/:post_id`
 
+## To upvote post
+POST req to `base_url/posts/upvote`
+required params, "post_id" & "user_id"
 
->>>>>>> 60640f2af5b41f29ebd94d270d07e31e997ee7c8
+## To downvote post
+POST req to `base_url/posts/downvote`
+required params, "post_id" & "user_id"
+
+## To add comment to post
+POST req to `base_url/posts/comment`
+required params, "post_id", "user_id"
+
+## To get all posts in a location
+GET req to `base_url/posts/all?lat=79.0106&lng=11.4289`
+
+## To get all posts by an user
+GET req to `base_url/posts/all/:user_id`
+
 #Schemas
 
 ## User
@@ -65,7 +86,7 @@ POST request to
 
 ## Comment
 
-**user**,           type: userId, required: true
+**postedBy**,           type: userId, required: true
 
 **timeStamp**,      type: Date, auto fill
 
