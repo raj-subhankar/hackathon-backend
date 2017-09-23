@@ -23,7 +23,8 @@ var router      = express.Router();
 
 var User = require('../models/user');
 
-router.route('/add').post(function(req, res, next){
+router.route('/add').post(upload.single('photos'), function(req, res, next){
+    var dir = '/home/ubuntu/yellow/public/uploads/profile/';
     User.findOne({email: req.body.email}, function(error, user){
         if(user) {
             res.json({
@@ -33,6 +34,18 @@ router.route('/add').post(function(req, res, next){
         }
         else {
             var user = new User(req.body);
+
+            if(req.file != undefined){
+                      im.resize({
+                        	srcPath: dir + req.file.filename,
+                          dstPath: dir + 'compressed/' + req.file.filename,
+                          quality: 0.4,
+                          width: ""}, function(err, stdout){
+                              if (err) return next(err);
+                              console.log("Image compressed");
+                          });
+                          user.profilePic = "http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                              }
 
             // create a token
             //var token = jwt.sign(user, "retailsheep", {
@@ -52,6 +65,7 @@ router.route('/add').post(function(req, res, next){
 		                id: user._id,
                     name: user.name,
                     email: user.email
+                    user.profilePic = "http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
                 });
             });
         }
