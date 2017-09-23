@@ -33,7 +33,7 @@ router.route('/all').get(function(req, res, next){
         Post
             .find({'location': {
 		$geoWithin: {
-		    $centerSphere: [[    
+		    $centerSphere: [[
 			req.query.lng,
 		   	req.query.lat
 		    ], distance
@@ -143,7 +143,7 @@ router.route('/add').post(upload.array('photos', 6), function(req, res, next){
 
                 console.log("Image compressed");
         });*/
-        imgs.push("http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/posts/"+req.files[key].filename);
+        imgs.push("http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/posts/"+req.files[key].filename);
         console.log(req.files[key].filename);
     }
     post.imageUrl = imgs;
@@ -232,11 +232,11 @@ router.route('/comment').post(function(req, res, next){
 	var comment = new Comment(req.body);
  	comment.save(function(error, result){
 	    if(error) return next(error);
-	
+
 	    post.commentCount = post.comments.unshift(comment);
 
 	    res.json({message: 'comment inserted});
-	}     
+	}
     })
 }
 

@@ -44,7 +44,7 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                               if (err) return next(err);
                               console.log("Image compressed");
                           });
-                          user.profilePic = "http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                          user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
                               }
 
             // create a token
@@ -65,7 +65,7 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
 		                id: user._id,
                     name: user.name,
                     email: user.email
-                    user.profilePic = "http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                    user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
                 });
             });
         }
@@ -87,7 +87,7 @@ router.route('/:id').put(upload.single('photos'), function(req, res, next) {
                     if (err) return next(err);
                     console.log("Image compressed");
                 });
-                user.profilePic = "http://ec2-52-11-84-14.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
                     }
 
 
