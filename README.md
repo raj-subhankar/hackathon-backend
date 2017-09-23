@@ -15,6 +15,7 @@ PUT request to `base_url/users/:user_id`
 
 ## To create new post
 POST request to `base_url/posts/add`
+required params, "lat" & "lng" & "user" & "postBody"
 Image should be sent as multipart request
 
 ## To update post
