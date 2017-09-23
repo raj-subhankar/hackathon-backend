@@ -180,7 +180,7 @@ router.route('/:post_id').delete(function(req, res, next){
 router.route('/upvote').post(function(req, res, next){
     Post.findOne({_id: req.body.post_id}, function(error, post){
         if(error) return next(error);
-        var userId = req.body.userId;
+        var userId = req.body.user_id;
 
         var index = post.upVotes.indexOf(userId);
         if(index == -1) {
@@ -204,7 +204,7 @@ router.route('/upvote').post(function(req, res, next){
 router.route('/downvote').post(function(req, res, next){
     Post.findOne({_id: req.body.post_id}, function(error, post){
         if(error) return next(error);
-        var userId = req.body.userId;
+        var userId = req.body.user_id;
 
         var index = post.downVotes.indexOf(userId);
         if(index == -1) {
@@ -228,7 +228,7 @@ router.route('/downvote').post(function(req, res, next){
 router.route('/comment').post(function(req, res, next){
     Post.findOne({_id: req.body.post_id}, function(error, post){
 	if(error) return next(error);
-	var postedBy = req.body.user;
+	var postedBy = req.body.user_id;
 	var comment = new Comment(req.body);
  	comment.save(function(error, result){
 	    if(error) return next(error);
@@ -236,7 +236,7 @@ router.route('/comment').post(function(req, res, next){
 	    post.commentCount = post.comments.unshift(comment);
 
 	    res.json({message: 'comment inserted'});
-	    })     
+	    })
     })
 })
 
