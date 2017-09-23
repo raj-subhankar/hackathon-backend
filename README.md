@@ -19,6 +19,18 @@ Image should be sent as multipart request
 ## To update post
 PUT request to `base_url/:post_id`
 
+## To upvote post
+POST req to `base_url/posts/upvote`
+required params, "post_id" & "user_id"
+
+## To downvote post
+POST req to `base_url/posts/downvote`
+required params, "post_id" & "user_id"
+
+## To add comment to post
+POST req to `base_url/posts/comment`
+required params, "post_id", "user_id"
+
 #Schemas
 
 ## User
