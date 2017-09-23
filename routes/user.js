@@ -64,8 +64,8 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                     //token: token,
 		                id: user._id,
                     name: user.name,
-                    email: user.email
-                    user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                    email: user.email,
+                    profilePic: user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename
                 });
             });
         }
