@@ -45,7 +45,7 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                               console.log("Image compressed");
                           });
                           user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
-                              }
+            }
 
             // create a token
             //var token = jwt.sign(user, "retailsheep", {
@@ -58,6 +58,7 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                 //var token = jwt.sign(user, "retailsheep", {
                     //expiresInMinutes: 1440 // expires in 24 hours
                 //});
+                if(req.file != undefined){
                 res.json({
                     success: true,
                     message: "Account created",
@@ -67,6 +68,16 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                     email: user.email,
                     profilePic: user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename
                 });
+              } else {
+                res.json({
+                    success: true,
+                    message: "Account created",
+                    //token: token,
+		                id: user._id,
+                    name: user.name,
+                    email: user.email
+                });
+              }
             });
         }
     });

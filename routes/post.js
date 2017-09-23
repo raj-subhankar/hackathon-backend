@@ -73,11 +73,11 @@ router.route('/all').get(function(req, res, next){
     }
 });
 
-router.route('/all/:username').get(function(req, res, next){
+router.route('/all/:user_id').get(function(req, res, next){
     var last_id = req.query.lastid;
     if(last_id == undefined) {
         Post
-            .find({'userName': req.params.username})
+            .find({'_id': req.params.user_id})
             .limit(10)
             .sort({_id: -1})
             .exec(function(error, result){
@@ -87,7 +87,7 @@ router.route('/all/:username').get(function(req, res, next){
         });
     } else {
         Post
-            .find({'userName': req.params.username, _id :{"$lt": last_id}})
+            .find({'_id': req.params.user_id, _id :{"$lt": last_id}})
             .limit(10)
             .sort({_id: -1})
             .exec(function(error, result){
@@ -228,14 +228,18 @@ router.route('/downvote').post(function(req, res, next){
 router.route('/comment').post(function(req, res, next){
     Post.findOne({_id: req.body.post_id}, function(error, post){
 	if(error) return next(error);
-	var postedBy = req.body.user_id;
 	var comment = new Comment(req.body);
+  console.log(comment)
  	comment.save(function(error, result){
 	    if(error) return next(error);
 
 	    post.commentCount = post.comments.unshift(comment);
 
-	    res.json({message: 'comment inserted'});
+      post.save(function(error){
+          if(error) return next(error);
+          res.json({message: 'comment inserted'});
+      });
+
 	    })
     })
 })
