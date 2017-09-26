@@ -44,7 +44,15 @@ router.route('/all').get(function(req, res, next){
             .sort({_id: -1})
 	    .limit(10)
 	    .populate('user')
-            .exec(function(error, result){
+      .populate({
+        path: 'comments',
+        model: 'Comment',
+        populate: {
+          path: 'postedBy',
+          model: 'User'
+        }
+      })
+        .exec(function(error, result){
                 if(error) return next(error);
                 //res.header('Cache-Control', 'public, max-age=31557600'); //One year
                 res.json(result);
@@ -65,7 +73,15 @@ router.route('/all').get(function(req, res, next){
             .sort({_id: -1})
 	    //.limit(10)
 	    .populate('user')
-            .exec(function(error, result){
+      .populate({
+        path: 'comments',
+        model: 'Comment',
+          populate: {
+            path: 'postedBy',
+            model: 'User'
+          }
+        })
+      .exec(function(error, result){
                 if(error) return next(error);
                 //res.header('Cache-Control', 'public, max-age=31557600'); //One year
                 res.json(result);
