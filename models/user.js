@@ -9,14 +9,15 @@ var mongoose 		= require('mongoose'),
 
 var UserSchema = new Schema({
     email: 	   { type: String, required: true, index: { unique: true } },
-    name: 	   { type: String },
+    name: 	   { type: String},
     profilePic:    {type: String},
     password: 	   { type: String, required: true },
     fullName: 	   { type: String },
     dob:	   { type: String },
     voterId:	   { type: String },
     loginAttempts: { type: Number, required: true, default: 0 },
-    lockUntil: 	   { type: Number }
+    lockUntil: 	   { type: Number },
+    isRepresentative: { type: Boolean, default: false}
 });
 
 UserSchema.virtual('isLocked').get(function() {
