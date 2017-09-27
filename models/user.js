@@ -10,7 +10,7 @@ var mongoose 		= require('mongoose'),
 var UserSchema = new Schema({
     email: 	   { type: String, required: true, index: { unique: true } },
     name: 	   { type: String},
-    profilePic:    {type: String},
+    profilePic:    {type: String, default: 'http://www.newthinktank.com/wp-content/uploads/2012/05/Gravatar.jpg'},
     password: 	   { type: String, required: true },
     fullName: 	   { type: String },
     dob:	   { type: String },
