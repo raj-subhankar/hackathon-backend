@@ -38,7 +38,10 @@ router.route('/authenticate').post(function(req, res) {
                 token: token,
                 name: user.name,
 		            email: user.email,
-		            id: user.id
+		            id: user.id,
+                profilePic: user.profilePic,
+                isRepresentative: user.isRepresentative,
+                aadhaarNumber: user.aadhaarNumber
             });
 
             return;
