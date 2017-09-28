@@ -71,7 +71,7 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                     aadhaarNumber: user.aadhaarNumber,
                     profilePic: user.profilePic
                 });
-            }
+            })
         }
     });
 });
