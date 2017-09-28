@@ -36,15 +36,17 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
             var user = new User(req.body);
 
             if(req.file != undefined){
-                      im.resize({
-                        	srcPath: dir + req.file.filename,
-                          dstPath: dir + 'compressed/' + req.file.filename,
-                          quality: 0.4,
-                          width: ""}, function(err, stdout){
-                              if (err) return next(err);
-                              console.log("Image compressed");
-                          });
-                          user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
+                im.resize({
+                    srcPath: dir + req.file.filename,
+                    dstPath: dir + 'compressed/' + req.file.filename,
+                    quality: 0.4,
+                    width: ""
+                },
+                function(err, stdout){
+                    if (err) return next(err);
+                    console.log("Image compressed");
+                });
+                user.profilePic = "http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000/static/uploads/profile/compressed/"+req.file.filename;
             }
 
             // create a token
@@ -68,7 +70,8 @@ router.route('/add').post(upload.single('photos'), function(req, res, next){
                     isRepresentative: user.isRepresentative,
                     aadhaarNumber: user.aadhaarNumber,
                     profilePic: user.profilePic
-            });
+                });
+            }
         }
     });
 });
