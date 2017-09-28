@@ -14,7 +14,7 @@ var UserSchema = new Schema({
     password: 	   { type: String, required: true },
     fullName: 	   { type: String },
     dob:	   { type: String },
-    voterId:	   { type: String },
+    aadhaarNumber:	   { type: String },
     loginAttempts: { type: Number, required: true, default: 0 },
     lockUntil: 	   { type: Number },
     isRepresentative: { type: Boolean, default: false}
