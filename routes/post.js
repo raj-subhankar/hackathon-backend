@@ -44,6 +44,7 @@ router.route('/all').get(function(req, res, next){
             .sort({_id: -1})
 	    .limit(10)
 	    .populate('user')
+      .populate('pickedUpBy')
       .populate({
         path: 'comments',
         model: 'Comment',
