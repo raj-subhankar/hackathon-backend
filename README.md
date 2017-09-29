@@ -10,20 +10,37 @@ POST request to `base_url/users/add`
 required params "email" & "password"
 Image should be sent as multipart request
 
-## User
+### Request Params
+nil
+
+### Request Body
 
 **email**,          type: String, required
+
 **name**,           type: String, required
+
 **password** ,      type: String, required
+
 **aadhaarNumber**,  type: String, 
 
 **profilePic**,     type: String, auto fill
+
 **fullName**,       type: String,
+
 **dob**,            type: String,
+
 **voterId**,        type: String,
 
 ## To update user
 PUT request to `base_url/users/:user_id`
+
+### Request params
+
+**user_id**,        type: userId
+
+### Request Body
+
+Any user field according to schema
 
 ## To create new post
 POST request to `base_url/posts/add`
