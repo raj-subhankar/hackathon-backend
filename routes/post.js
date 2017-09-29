@@ -200,13 +200,15 @@ router.route('/upvote').post(function(req, res, next){
 
         var index = post.upVotes.indexOf(userId);
         if(index == -1) {
+          
             post.upVotes.push(userId);
             post.upVoteCount++;
             post.save(function(error){
                 if(error) return next(error);
                 res.json({
                   message: 'Post upvoted',
-                  upVoteCount: post.upVoteCount
+                  upVoteCount: post.upVoteCount,
+                  downVoteCount: post.downVoteCount
                 });
             });
         } else {
@@ -216,7 +218,8 @@ router.route('/upvote').post(function(req, res, next){
                 if(error) return next(error);
                 res.json({
                   message: 'Upvote removed',
-                  upVoteCount: post.upVoteCount
+                  upVoteCount: post.upVoteCount,
+                  downVoteCount: post.downVoteCount
                 });
             });
         }
@@ -236,6 +239,7 @@ router.route('/downvote').post(function(req, res, next){
                 if(error) return next(error);
                 res.json({
                   message: 'Post downVoted',
+                  upVoteCount: post.upVoteCount,
                   downVoteCount: post.downVoteCount
                 });
             });
@@ -246,6 +250,7 @@ router.route('/downvote').post(function(req, res, next){
                 if(error) return next(error);
                 res.json({
                   message: 'DownVote removed',
+                  upVoteCount: post.upVoteCount,
                   downVoteCount: post.downVoteCount
                 });
             });
