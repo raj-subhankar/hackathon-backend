@@ -198,19 +198,23 @@ router.route('/upvote').post(function(req, res, next){
         if(error) return next(error);
         var userId = req.body.user_id;
 
-        var index = post.upVotes.indexOf(userId);
-        if(index == -1) {
-          
-            post.upVotes.push(userId);
-            post.upVoteCount++;
-            post.save(function(error){
-                if(error) return next(error);
-                res.json({
-                  message: 'Post upvoted',
-                  upVoteCount: post.upVoteCount,
-                  downVoteCount: post.downVoteCount
-                });
-            });
+        var upVoteIndex = post.upVotes.indexOf(userId);
+        if(upVoteIndex == -1) {
+          var downVoteIndex = post.downVotes.indexOf(userId);
+          if(downVoteIndex != -1) {
+            post.downVotes.splice(downVoteIndex, 1);
+            post.downVoteCount--;
+          }
+          post.upVotes.push(userId);
+          post.upVoteCount++;
+          post.save(function(error){
+            if(error) return next(error);
+              res.json({
+                message: 'Post upvoted',
+                upVoteCount: post.upVoteCount,
+                downVoteCount: post.downVoteCount
+              });
+          });
         } else {
             post.upVotes.splice(index, 1);
             post.upVoteCount--;
@@ -231,8 +235,13 @@ router.route('/downvote').post(function(req, res, next){
         if(error) return next(error);
         var userId = req.body.user_id;
 
-        var index = post.downVotes.indexOf(userId);
+        var downVoteIndex = post.downVotes.indexOf(userId);
         if(index == -1) {
+          var upVoteIndex = post.upVotes.indexOf(userId);
+          if(upVoteIndex != -1) {
+            post.upVotes.splice(upVoteIndex, 1);
+            post.upVoteCount--;
+          }
             post.downVotes.push(userId);
             post.downVoteCount++;
             post.save(function(error){
