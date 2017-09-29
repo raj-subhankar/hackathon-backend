@@ -7,7 +7,6 @@ base_url = http://ec2-54-149-192-204.us-west-2.compute.amazonaws.com:3000
 
 ## To create new user
 POST request to `base_url/users/add` 
-required params "email" & "password"
 Image should be sent as multipart request
 
 ### Request Params
