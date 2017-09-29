@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
 var upload      = multer({storage: storage});
 var router      = express.Router();
 
-var distance = 10/6378100;
+var distance = 5000/6378100;
 
 // Routes
 router.route('/all').get(function(req, res, next){
