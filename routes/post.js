@@ -216,7 +216,7 @@ router.route('/upvote').post(function(req, res, next){
               });
           });
         } else {
-            post.upVotes.splice(index, 1);
+            post.upVotes.splice(upVoteIndex, 1);
             post.upVoteCount--;
             post.save(function(error){
                 if(error) return next(error);
@@ -236,7 +236,7 @@ router.route('/downvote').post(function(req, res, next){
         var userId = req.body.user_id;
 
         var downVoteIndex = post.downVotes.indexOf(userId);
-        if(index == -1) {
+        if(downVoteIndex == -1) {
           var upVoteIndex = post.upVotes.indexOf(userId);
           if(upVoteIndex != -1) {
             post.upVotes.splice(upVoteIndex, 1);
@@ -253,7 +253,7 @@ router.route('/downvote').post(function(req, res, next){
                 });
             });
         } else {
-            post.downVotes.splice(index, 1);
+            post.downVotes.splice(downVoteIndex, 1);
             post.downVoteCount--;
             post.save(function(error){
                 if(error) return next(error);
