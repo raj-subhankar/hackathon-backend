@@ -7,8 +7,8 @@ var PostSchema = new mongoose.Schema({
 	   type: mongoose.Schema.Types.ObjectId, ref:'User',
   },
   timeStamp: {
-	   type: Date,
-	    default: Date.now.toString()
+	   type: String,
+	    default: Date.now
   },
   messageTitle: {
 	   type: String,
