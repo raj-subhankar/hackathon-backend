@@ -51,7 +51,8 @@ router.route('/all').get(function(req, res, next){
         populate: {
           path: 'postedBy',
           model: 'User'
-        }
+        },
+        options: { sort: { 'created_at': -1 } }
       })
         .exec(function(error, result){
                 if(error) return next(error);
