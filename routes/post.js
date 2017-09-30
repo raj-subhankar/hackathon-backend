@@ -166,7 +166,6 @@ router.route('/add').post(upload.array('photos', 6), function(req, res, next){
     post.imageUrl = imgs;
 
     var date = new Date();
-
     post.timeStamp = date.toString();
 
     post.validate(function(error){
