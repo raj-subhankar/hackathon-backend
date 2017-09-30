@@ -42,7 +42,7 @@ router.route('/all').get(function(req, res, next){
 	    }})
             //.limit(5)
             .sort({_id: -1})
-	    .limit(10)
+	    // .limit(10)
 	    .populate('user')
       .populate('pickedUpBy')
       .populate({
